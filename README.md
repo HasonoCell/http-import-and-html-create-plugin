@@ -1,1 +1,1 @@
-esbuild 实现一个 CDN 依赖拉取插件
+esbuild 实现 CDN 依赖拉取插件与 HTML 生成插件

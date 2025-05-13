@@ -5,16 +5,19 @@ export default () => ({
       console.log("Start Building...");
     });
 
+    // 解析路径
     build.onResolve({ filter: /^https?:\/\// }, (args) => ({
       path: args.path,
       namespace: "http-url",
     }));
 
+    // 处理依赖中含有间接引入的问题
     build.onResolve({ filter: /.*/, namespace: "http-url" }, (args) => ({
       path: new URL(args.path, args.importer).toString(),
       namespace: "http-url",
     }));
 
+    // 开始下载
     build.onLoad({ filter: /.*/, namespace: "http-url" }, async (args) => {
       const http = await import("http");
       const https = await import("https");
