@@ -5,7 +5,7 @@ export default () => ({
       console.log("Start Building...");
     });
 
-    // 解析路径
+    // 解析路径，当你的模块导入语句的路径中出现对应字段，执行回调
     build.onResolve({ filter: /^https?:\/\// }, (args) => ({
       path: args.path,
       namespace: "http-url",
